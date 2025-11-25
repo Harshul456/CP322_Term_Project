@@ -6,9 +6,15 @@ import os
 import sys
 from datetime import datetime
 
-# Add src to path
-sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+# Add project root and src to path for reliable imports
+project_root = os.path.dirname(os.path.abspath(__file__))
+src_path = os.path.join(project_root, 'src')
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
+# Now import from src package
 from utils import set_seed, save_json
 from data_loader import load_dataset
 from preprocessing import preprocess_data

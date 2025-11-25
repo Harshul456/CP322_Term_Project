@@ -235,8 +235,8 @@ def main():
         print(f"\n{dataset_name}:")
         for model_name, model_metrics in metrics.items():
             if isinstance(model_metrics, dict) and 'RMSE' in model_metrics:
-                print(f"  {model_name}: RMSE={model_metrics['RMSE']:.4f}, "
-                      f"R2={model_metrics.get('R2', 'N/A'):.4f}")
+                r2 = model_metrics.get("R2")
+                print(f"R2={r2 if r2 is not None else 'N/A'}")
 
 
 if __name__ == "__main__":

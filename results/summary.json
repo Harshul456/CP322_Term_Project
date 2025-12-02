@@ -1,38 +1,75 @@
 {
-    "EnergyEfficiency": {
+    "EnergyEfficiencyHeatingLoad": {
         "LinearRegression": {
             "model": "Linear Regression",
-            "RMSE": 1.0805338955471229,
-            "MAE": 0.81664148078449,
-            "R2": 0.988798463592207
+            "RMSE": 1.0926985607959212,
+            "MAE": 0.8068603438170141,
+            "R2": 0.988544829779784
         },
         "RandomForest": {
             "model": "Random Forest",
-            "RMSE": 1.032758085507842,
-            "MAE": 0.4490551948051988,
-            "R2": 0.9897671169076505
+            "RMSE": 0.5369301528978475,
+            "MAE": 0.36327012987013024,
+            "R2": 0.9972341005217006
         },
         "XGBoost": {
             "model": "XGBoost",
-            "RMSE": 0.697654475579328,
-            "MAE": 0.38298435842836054,
-            "R2": 0.9953303796361287
+            "RMSE": 0.4258843255048302,
+            "MAE": 0.3098035826001848,
+            "R2": 0.9982598602905141
         },
         "TabNet": {
             "model": "TabNet",
-            "RMSE": 26.015839463781624,
-            "MAE": 23.304216846817887,
-            "R2": -5.493464834719462
+            "RMSE": 24.057491433975535,
+            "MAE": 21.2531307776311,
+            "R2": -4.552665152286133
         },
         "TunedXGBoost": {
             "model": "Tuned XGBoost",
-            "RMSE": 0.7095119766792629,
+            "RMSE": 0.37791900601990924,
             "best_params": {
-                "n_estimators": 441,
-                "max_depth": 8,
-                "learning_rate": 0.017627991932548465,
-                "subsample": 0.9708130364360296,
-                "colsample_bytree": 0.6512724702232536
+                "n_estimators": 383,
+                "max_depth": 4,
+                "learning_rate": 0.09247026252673604,
+                "subsample": 0.9016507202716828,
+                "colsample_bytree": 0.7863882495405056
+            }
+        }
+    },
+    "EnergyEfficiencyCoolingLoad": {
+        "LinearRegression": {
+            "model": "Linear Regression",
+            "RMSE": 1.8530674513644962,
+            "MAE": 1.3704480340193887,
+            "R2": 0.9629401966237454
+        },
+        "RandomForest": {
+            "model": "Random Forest",
+            "RMSE": 2.077575386257841,
+            "MAE": 1.2932701298701315,
+            "R2": 0.9534162723603867
+        },
+        "XGBoost": {
+            "model": "XGBoost",
+            "RMSE": 1.3245176460490584,
+            "MAE": 0.8326030966523406,
+            "R2": 0.9810662711925745
+        },
+        "TabNet": {
+            "model": "TabNet",
+            "RMSE": 25.956141102920146,
+            "MAE": 23.6205011081444,
+            "R2": -6.271113232036669
+        },
+        "TunedXGBoost": {
+            "model": "Tuned XGBoost",
+            "RMSE": 1.1293746289330842,
+            "best_params": {
+                "n_estimators": 315,
+                "max_depth": 5,
+                "learning_rate": 0.05078600683309454,
+                "subsample": 0.9595442357316278,
+                "colsample_bytree": 0.8602141649304383
             }
         }
     },
@@ -51,25 +88,25 @@
         },
         "XGBoost": {
             "model": "XGBoost",
-            "RMSE": 74.03502918804719,
-            "MAE": 37.90397644042969,
-            "R2": 0.4522697925567627
+            "RMSE": 73.89011121358696,
+            "MAE": 37.82294464111328,
+            "R2": 0.45441192388534546
         },
         "TabNet": {
             "model": "TabNet",
-            "RMSE": 87.98851909304702,
-            "MAE": 46.951576232910156,
-            "R2": 0.2263505458831787
+            "RMSE": 88.90816397324686,
+            "MAE": 48.24059295654297,
+            "R2": 0.21009385585784912
         },
         "TunedXGBoost": {
             "model": "Tuned XGBoost",
-            "RMSE": 63.689171347058675,
+            "RMSE": 62.24863122867642,
             "best_params": {
-                "n_estimators": 447,
+                "n_estimators": 394,
                 "max_depth": 10,
-                "learning_rate": 0.11579649478785112,
-                "subsample": 0.6041393755876386,
-                "colsample_bytree": 0.6024173123555736
+                "learning_rate": 0.06941387831843578,
+                "subsample": 0.9385059823307755,
+                "colsample_bytree": 0.848850961259567
             }
         }
     }

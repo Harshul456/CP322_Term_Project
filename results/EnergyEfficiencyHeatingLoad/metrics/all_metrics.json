@@ -1,0 +1,37 @@
+{
+    "LinearRegression": {
+        "model": "Linear Regression",
+        "RMSE": 1.0926985607959212,
+        "MAE": 0.8068603438170141,
+        "R2": 0.988544829779784
+    },
+    "RandomForest": {
+        "model": "Random Forest",
+        "RMSE": 0.5369301528978475,
+        "MAE": 0.36327012987013024,
+        "R2": 0.9972341005217006
+    },
+    "XGBoost": {
+        "model": "XGBoost",
+        "RMSE": 0.4258843255048302,
+        "MAE": 0.3098035826001848,
+        "R2": 0.9982598602905141
+    },
+    "TabNet": {
+        "model": "TabNet",
+        "RMSE": 24.057491433975535,
+        "MAE": 21.2531307776311,
+        "R2": -4.552665152286133
+    },
+    "TunedXGBoost": {
+        "model": "Tuned XGBoost",
+        "RMSE": 0.37791900601990924,
+        "best_params": {
+            "n_estimators": 383,
+            "max_depth": 4,
+            "learning_rate": 0.09247026252673604,
+            "subsample": 0.9016507202716828,
+            "colsample_bytree": 0.7863882495405056
+        }
+    }
+}

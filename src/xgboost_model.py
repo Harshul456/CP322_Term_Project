@@ -1,6 +1,4 @@
-"""
-XGBoost model for the CP322 regression project.
-"""
+
 import os
 import numpy as np
 from xgboost import XGBRegressor
@@ -9,17 +7,7 @@ import joblib
 
 
 def evaluate_model(y_true, y_pred, model_name):
-    """
-    Evaluate a model and return metrics.
-    
-    Args:
-        y_true (array-like): True target values
-        y_pred (array-like): Predicted target values
-        model_name (str): Name of the model
-        
-    Returns:
-        dict: Dictionary of metrics
-    """
+
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     mae = mean_absolute_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
@@ -42,25 +30,7 @@ def evaluate_model(y_true, y_pred, model_name):
 def train_xgboost(X_train, y_train, X_test, y_test, save_dir, 
                   n_estimators=100, max_depth=6, learning_rate=0.1, 
                   subsample=0.8, colsample_bytree=0.8, random_state=42):
-    """
-    Train and evaluate XGBoost model.
-    
-    Args:
-        X_train (pd.DataFrame): Training features
-        y_train (pd.Series): Training target
-        X_test (pd.DataFrame): Test features
-        y_test (pd.Series): Test target
-        save_dir (str): Directory to save model and metrics
-        n_estimators (int): Number of boosting rounds
-        max_depth (int): Maximum tree depth
-        learning_rate (float): Learning rate
-        subsample (float): Subsample ratio
-        colsample_bytree (float): Column subsample ratio
-        random_state (int): Random seed
-        
-    Returns:
-        dict: Evaluation metrics
-    """
+
     print("\n" + "="*50)
     print("Training XGBoost...")
     print("="*50)
@@ -81,10 +51,10 @@ def train_xgboost(X_train, y_train, X_test, y_test, save_dir,
     y_pred_train = model.predict(X_train)
     y_pred_test = model.predict(X_test)
     
-    # Evaluate on test set
+    #evaluate on test set
     metrics = evaluate_model(y_test, y_pred_test, "XGBoost")
     
-    # Save model
+    #Save model
     os.makedirs(save_dir, exist_ok=True)
     model_path = os.path.join(save_dir, "xgboost.joblib")
     joblib.dump(model, model_path)

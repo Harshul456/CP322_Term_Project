@@ -1,6 +1,4 @@
-"""
-TabNet model for the CP322 regression project.
-"""
+
 import os
 import numpy as np
 from pytorch_tabnet.tab_model import TabNetRegressor
@@ -9,17 +7,7 @@ import torch
 
 
 def evaluate_model(y_true, y_pred, model_name):
-    """
-    Evaluate a model and return metrics.
-    
-    Args:
-        y_true (array-like): True target values
-        y_pred (array-like): Predicted target values
-        model_name (str): Name of the model
-        
-    Returns:
-        dict: Dictionary of metrics
-    """
+    #evaluate model with RMSE MAE ad r^2
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     mae = mean_absolute_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
@@ -42,35 +30,18 @@ def evaluate_model(y_true, y_pred, model_name):
 def train_tabnet(X_train, y_train, X_test, y_test, save_dir, 
                  max_epochs=100, patience=10, batch_size=1024, 
                  virtual_batch_size=128, random_state=42):
-    """
-    Train and evaluate TabNet model.
     
-    Args:
-        X_train (pd.DataFrame): Training features
-        y_train (pd.Series): Training target
-        X_test (pd.DataFrame): Test features
-        y_test (pd.Series): Test target
-        save_dir (str): Directory to save model and metrics
-        max_epochs (int): Maximum number of epochs
-        patience (int): Early stopping patience
-        batch_size (int): Batch size
-        virtual_batch_size (int): Virtual batch size
-        random_state (int): Random seed
-        
-    Returns:
-        dict: Evaluation metrics
-    """
     print("\n" + "="*50)
     print("Training TabNet...")
     print("="*50)
     
-    # Convert to numpy arrays
+    #Convert to numpy arrays
     X_train_np = X_train.values.astype(np.float32)
     X_test_np = X_test.values.astype(np.float32)
     y_train_np = y_train.values.reshape(-1, 1).astype(np.float32)
     y_test_np = y_test.values.reshape(-1, 1).astype(np.float32)
     
-    # Initialize TabNet
+    #TabNet
     model = TabNetRegressor(
         n_d=64,
         n_a=64,
@@ -86,7 +57,7 @@ def train_tabnet(X_train, y_train, X_test, y_test, save_dir,
         verbose=1
     )
     
-    # Train model
+    #train the model
     model.fit(
         X_train=X_train_np,
         y_train=y_train_np,
@@ -98,14 +69,14 @@ def train_tabnet(X_train, y_train, X_test, y_test, save_dir,
         virtual_batch_size=virtual_batch_size
     )
     
-    # Predictions
+    #predict
     y_pred_test = model.predict(X_test_np)
     y_pred_test = y_pred_test.flatten()
     
-    # Evaluate on test set
+    #evaluate using test set
     metrics = evaluate_model(y_test, y_pred_test, "TabNet")
     
-    # Save model
+    #Save model
     os.makedirs(save_dir, exist_ok=True)
     model_path = os.path.join(save_dir, "tabnet")
     model.save_model(model_path)

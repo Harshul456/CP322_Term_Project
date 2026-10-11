@@ -4,7 +4,7 @@ Machine Learning project for CP322 focusing on regression tasks on tabular data.
 
 
 Datasets and predicted feature
-1. **Energy Efficiency Dataset** - Predicting Heating Load and Cooling Load
+1. **Energy Efficiency Dataset** - Predicting Heating Load and Cooling Load 
 2. **Energy Appliances Dataset** - Predicting Appliances energy consumption
 
 
